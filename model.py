@@ -13,13 +13,52 @@ class User(db.Model):
                         primary_key=True)
 
     list_id = db.Column(db.Integer,
-                       db.ForeignKey('list.id'),
+                       db.ForeignKey('lists.lst_id'),
                        nullable=True)
     username = db.Column(db.String(30),
                          nullable=False)
     password = db.Column(db.String(30),
                          nullable=False)
     lst = db.relationship("Lst")
+
+    def __repr__(self):
+        """Returns readable info about user object"""
+
+        return f"<User ID: {self.user_id}, Username: {self.username}, List ID: {self.list_id}>"
+
+class Lst(db.model):
+     """Data model for a list"""
+
+    __tablename__ = "lists"
+
+    lst_id = db.Column(db.Integer,
+                        autoincrement=True,
+                        primary_key=True)
+
+    user = db.relationship("User")
+
+    def __repr__(self):
+        """Returns readable info about list object"""
+        return f"<List ID:{self.lst_id}>"
+
+class Task(db.model):
+    """Data model for a task"""
+
+    __tablename__ = "tasks"
+
+    task_id = db.Column(db.Integer,
+                        autoincrement=True,
+                        primary_key=True)
+
+    lst_id = db.Column(db.Integer,
+                       db.ForeignKey('lists.lst_id'))
+
+    lst = db.relationship("Lst")
+
+    def __repr__(self):
+        """Returns readable info about list object"""
+        return f"<Task ID:{self.task_id}, List ID: {self.lst_id}>"
+
 
 
 
