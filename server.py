@@ -112,10 +112,14 @@ def all_tasks():
 
     return jsonify(task_lst)
 
-@app.route("/complete_task")
+@app.route("/complete_task",methods=['POST'])
 def complete_task():
+    """Switch task to complete"""
 
-    pass
+    task = Task.query.filter_by(task_id=request.form.get('id'))
+    
+
+    return f"task complete!"
 
 
 
