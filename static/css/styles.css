@@ -1,0 +1,10 @@
+li.done {
+
+    text-decoration: line-through;
+
+}
+
+ button #update {
+
+    display: inline-block;
+}
