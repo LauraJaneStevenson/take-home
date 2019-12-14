@@ -83,7 +83,18 @@ def show_list():
 
     return render_template("list.html",todos=todos)
 
+@app.route("/add-task",methods=['POST'])
+def add_task():
+    """Adds task to db"""
 
+    new_task = Task(lst_id=session["list_id"],task_str=request.form["task"])
+    db.session.add(new_task)
+    db.session.commit()
+
+    return redirect("/list")
+
+
+    
 
 
 

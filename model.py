@@ -52,6 +52,8 @@ class Task(db.Model):
     task_id = db.Column(db.Integer,
                         autoincrement=True,
                         primary_key=True)
+    task_str = db.Column(db.String(200),
+                         nullable=False)
 
     lst_id = db.Column(db.Integer,
                        db.ForeignKey('lists.lst_id'))
@@ -59,8 +61,8 @@ class Task(db.Model):
     lst = db.relationship("Lst")
 
     def __repr__(self):
-
         """Returns readable info about list object"""
+        
         return f"<Task ID:{self.task_id}, List ID: {self.lst_id}>"
 
 
