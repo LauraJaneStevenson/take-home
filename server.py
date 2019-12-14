@@ -107,6 +107,7 @@ def all_tasks():
         task["id"] = t.task_id
         task["list_id"] = t.lst_id
         task["task_str"] = t.task_str
+        task["complete"] = t.complete
 
         task_lst.append(task)
 
@@ -116,10 +117,12 @@ def all_tasks():
 def complete_task():
     """Switch task to complete"""
 
-    task = Task.query.filter_by(task_id=request.form.get('id'))
-    
+    task = Task.query.filter_by(task_id=request.form.get('id')).one()
+    task.complete = True;
+    db.session.commit()
 
-    return f"task complete!"
+
+    return f"task complete!{task}"
 
 
 
