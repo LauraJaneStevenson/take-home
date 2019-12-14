@@ -29,7 +29,13 @@ def login_process():
     # query for user
     user = User.query.filter_by(username=username,password=password).first()
 
-    pass
+
+    # add user_id to the session 
+    session["user_id"] = user.user_id
+    session["username"] = user.username
+    session["list_id"] = user.list_id
+
+    return redirect("/list")
 
 
 @app.route("/register")
@@ -63,14 +69,19 @@ def register_user():
 
     # if username not taken create new user object
     new_user = User(username=username, password=password,
-                                            list_id=new_list.lst_id)
+                                       list_id=new_list.lst_id)
     db.session.add(new_user)
     db.session.commit()
 
     return redirect("/")
 
 
+@app.route("/list")
+def show_list():
+    """Show to do list"""
+    todos = Task.query.filter_by(lst_id=session["list_id"]).all()
 
+    return render_template("list.html",todos=todos)
 
 
 

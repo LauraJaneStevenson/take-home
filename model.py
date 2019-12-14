@@ -1,6 +1,7 @@
 from flask_sqlalchemy import SQLAlchemy
 import os
 
+
 # Instantiate a SQLAlchemy object.
 db = SQLAlchemy()
 
@@ -37,6 +38,7 @@ class Lst(db.Model):
 
     user = db.relationship("User")
 
+
     def __repr__(self):
         """Returns readable info about list object"""
 
@@ -57,7 +59,7 @@ class Task(db.Model):
     lst = db.relationship("Lst")
 
     def __repr__(self):
-        
+
         """Returns readable info about list object"""
         return f"<Task ID:{self.task_id}, List ID: {self.lst_id}>"
 
