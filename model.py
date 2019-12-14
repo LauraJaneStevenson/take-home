@@ -6,7 +6,7 @@ db = SQLAlchemy()
 
 class User(db.Model):
     """Data model for a user"""
-     __tablename__ = "users"
+    __tablename__ = "users"
 
     user_id = db.Column(db.Integer,
                         autoincrement=True,
@@ -26,8 +26,8 @@ class User(db.Model):
 
         return f"<User ID: {self.user_id}, Username: {self.username}, List ID: {self.list_id}>"
 
-class Lst(db.model):
-     """Data model for a list"""
+class Lst(db.Model):
+    """Data model for a list"""
 
     __tablename__ = "lists"
 
@@ -39,9 +39,10 @@ class Lst(db.model):
 
     def __repr__(self):
         """Returns readable info about list object"""
+
         return f"<List ID:{self.lst_id}>"
 
-class Task(db.model):
+class Task(db.Model):
     """Data model for a task"""
 
     __tablename__ = "tasks"
@@ -56,6 +57,7 @@ class Task(db.model):
     lst = db.relationship("Lst")
 
     def __repr__(self):
+        
         """Returns readable info about list object"""
         return f"<Task ID:{self.task_id}, List ID: {self.lst_id}>"
 
