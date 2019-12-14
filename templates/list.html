@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="row align-items-center justify-content-center" style="height:500px;">
+    <div class="col-5">
+        <div class="card mb-3" style="max-width: 400px;">
+          <div class="card-header">Your To Dos:</div>
+          <div class="card-body form-group">
+            <ul class="tasks">
+
+            </ul>
+            <form action="/add-task" method="POST">
+                <div>
+                    <input type="text" class="form-control" style="margin-bottom: 25px;" placeholder="New Task" name="task" required>
+                </div>
+
+                <input class="btn-primary" type="submit" value="Add">
+         
+            </form>
+          </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

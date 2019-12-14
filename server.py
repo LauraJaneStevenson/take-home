@@ -99,7 +99,7 @@ def all_tasks():
 
     # query all tasks with session's list id 
     tasks = Task.query.filter_by(lst_id=session["list_id"]).all()
-
+    
     tasks_lst = []
 
     for t in tasks:
@@ -109,8 +109,6 @@ def all_tasks():
         task["task_str"] = t.task_str
 
         task_lst.append(task)
-
-
 
     return jsonify(task_list)
 
