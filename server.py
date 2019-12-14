@@ -99,8 +99,8 @@ def all_tasks():
 
     # query all tasks with session's list id 
     tasks = Task.query.filter_by(lst_id=session["list_id"]).all()
-    
-    tasks_lst = []
+
+    task_lst = []
 
     for t in tasks:
         task = {}
@@ -110,10 +110,12 @@ def all_tasks():
 
         task_lst.append(task)
 
-    return jsonify(task_list)
+    return jsonify(task_lst)
 
+@app.route("/complete_task")
+def complete_task():
 
-    
+    pass
 
 
 
