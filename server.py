@@ -93,6 +93,27 @@ def add_task():
 
     return redirect("/list")
 
+@app.route("/all_tasks.json")
+def all_tasks():
+    """Returns a list of tasks from database"""
+
+    # query all tasks with session's list id 
+    tasks = Task.query.filter_by(lst_id=session["list_id"]).all()
+
+    tasks_lst = []
+
+    for t in tasks:
+        task = {}
+        task["id"] = t.task_id
+        task["list_id"] = t.lst_id
+        task["task_str"] = t.task_str
+
+        task_lst.append(task)
+
+
+
+    return jsonify(task_list)
+
 
     
 

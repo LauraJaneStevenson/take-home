@@ -58,12 +58,14 @@ class Task(db.Model):
     lst_id = db.Column(db.Integer,
                        db.ForeignKey('lists.lst_id'))
 
+    complete = db.Column(db.Boolean,default=False)
+
     lst = db.relationship("Lst")
 
     def __repr__(self):
         """Returns readable info about list object"""
-        
-        return f"<Task ID:{self.task_id}, List ID: {self.lst_id}>"
+
+        return f"<Task ID:{self.task_id}, List ID: {self.lst_id}, Complete: {self.complete}>"
 
 
 
