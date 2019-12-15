@@ -37,6 +37,14 @@ def login_process():
 
     return redirect("/list")
 
+@app.route("/logout",methods=['POST'])
+def logout():
+
+    del session["user_id"]
+    del session["list_id"]
+    del session["username"]
+
+    return redirect("/")
 
 @app.route("/register")
 def register():
