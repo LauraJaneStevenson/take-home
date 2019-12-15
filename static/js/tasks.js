@@ -3,8 +3,8 @@ const completeTask = (id) => {
 
     $.post('/complete_task',{ 'id':id }, (res) => {
 
-        
-        alert(res);
+        location.reload(true);
+        // alert(res);
     });
 
 };
