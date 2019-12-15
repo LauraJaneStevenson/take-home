@@ -9,34 +9,37 @@ const completeTask = (id) => {
 
 };
 
-// $('#update').on('click', () => {
+$('#update').on('click', () => {
 
-    $.get('/all_tasks.json',(res)=>{
+   
+            location.reload(true);
 
-        for(const task of res){
+ });
 
-            if(task.complete){
-                $('ul.tasks').append(
-                    `<input class="form-check-input" 
-                    type="checkbox" 
-                    id="invalidCheck"
-                    onclick="">
-                    <li class="done" id="${task.id}">${task.task_str}</li>`
-                    );
-            }else{
+$.get('/all_tasks.json',(res)=>{
 
-                $('ul.tasks').append(
-                    `<input class="form-check-input" 
-                    type="checkbox"  
-                    id="invalidCheck"
-                    onclick="completeTask(${task.id})">
-                    <li id="${task.id}">${task.task_str}</li>`
-                    );
-            }
-        };
-    });
+    for(const task of res){
+
+        if(task.complete){
+            $('ul.tasks').append(
+                `<input class="form-check-input" 
+                type="checkbox" 
+                id="invalidCheck"
+                onclick="">
+                <li class="done" id="${task.id}">${task.task_str}</li>`
+                );
+        }else{
+
+            $('ul.tasks').append(
+                `<input class="form-check-input" 
+                type="checkbox"  
+                id="invalidCheck"
+                onclick="completeTask(${task.id})">
+                <li id="${task.id}">${task.task_str}</li>`
+                );
+        }
+    };
+});
 
 
 
-
-// });

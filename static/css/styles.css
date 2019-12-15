@@ -8,3 +8,8 @@ li.done {
 
     display: inline-block;
 }
+
+.btn-primary{
+
+    margin-top: 10px;
+}
