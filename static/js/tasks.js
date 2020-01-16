@@ -9,6 +9,17 @@ const completeTask = (id) => {
 
 };
 
+
+const deleteTask = (id) => {
+
+    $.post('/delete_task',{ 'id':id }, (res) => {
+
+        location.reload(true);
+    });
+
+};
+
+
 $('#update').on('click', () => {
 
    
@@ -25,8 +36,9 @@ $.get('/all_tasks.json',(res)=>{
                 `<input class="form-check-input" 
                 type="checkbox" 
                 id="invalidCheck"
-                onclick="">
-                <li class="done" id="${task.id}">${task.task_str}</li>`
+                onclick="completeTask(${task.id})"
+                checked>
+                <li class="done" id="${task.id}">${task.task_str}<i class="fas fa-trash-alt" onclick="deleteTask(${task.id})"></i></li>`
                 );
         }else{
 
@@ -35,7 +47,7 @@ $.get('/all_tasks.json',(res)=>{
                 type="checkbox"  
                 id="invalidCheck"
                 onclick="completeTask(${task.id})">
-                <li id="${task.id}">${task.task_str}</li>`
+                <li id="${task.id}">${task.task_str}<i class="fas fa-trash-alt" onclick="deleteTask(${task.id})"></i></li>`
                 );
         }
     };

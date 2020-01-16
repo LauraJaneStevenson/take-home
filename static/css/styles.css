@@ -13,3 +13,8 @@ li.done {
 
     margin-top: 10px;
 }
+
+i.fas.fa-trash-alt{
+    margin-right: 1rem;
+    float:right;
+}

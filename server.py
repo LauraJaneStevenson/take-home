@@ -12,7 +12,6 @@ app = Flask(__name__)
 # Required to use Flask sessions and the debug toolbar
 app.secret_key = "123"
 
-
 @app.route("/")
 def index():
     """Show homepage."""
@@ -26,8 +25,14 @@ def login_process():
     username = request.form["username"]
     password = request.form["password"]
 
+
     # query for user
     user = User.query.filter_by(username=username,password=password).first()
+
+    if not user:
+
+        flash("No user with that username and password found!")
+        return redirect("/")
 
 
     # add user_id to the session 
@@ -59,6 +64,8 @@ def register_user():
     # get info from form
     username = request.form["username"]
     password = request.form["password"]
+
+    assert len(username) > 0 and len(password) > 0
 
     # get all existing usernames
     existing_usernames = db.session.query(User.username).all()
@@ -123,15 +130,34 @@ def all_tasks():
 
 @app.route("/complete_task",methods=['POST'])
 def complete_task():
-    """Switch task to complete"""
+    """Switch task completion"""
 
     task = Task.query.filter_by(task_id=request.form.get('id')).one()
-    task.complete = True;
+
+    if task.complete:
+
+        task.complete = False
+
+    else:
+
+        task.complete = True
+
     db.session.commit()
 
 
     return f"task complete!{task}"
 
+@app.route("/delete_task",methods=['POST'])
+def delete():
+    """Delete task from list and DB"""
+    print("\n\n\n\n")
+    print("delete task")
+    print("\n\n\n\n")
+
+    Task.query.filter_by(task_id=request.form.get('id')).delete()
+    db.session.commit()
+
+    return f"task deleted!"
 
 
 # if running this file
