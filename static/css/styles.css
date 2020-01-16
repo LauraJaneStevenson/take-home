@@ -7,14 +7,56 @@ li.done {
  button #update {
 
     display: inline-block;
+    cursor: pointer;
 }
 
 .btn-primary{
 
     margin-top: 10px;
+    cursor: pointer;
 }
 
 i.fas.fa-trash-alt{
     margin-right: 1rem;
     float:right;
+}
+
+i.fas.fa-trash-alt:hover{
+    color:#B8B8B8;
+    cursor: pointer;
+
+}
+
+card.mb-3.bg-transparent{
+    border-color: rgba(255,255,255,6);
+    box-shadow: 0px 3px 15px;
+    
+}
+
+input.form-control{
+    background-color: rgb(128,134,140);
+    border:none;
+    color: white;
+}
+input.form-control:hover{
+    background-color: rgb(128,134,140);
+    border:none;
+    color: white;
+}
+
+div.card-header{
+
+    color: rgb(128,134,140);
+    border-color: rgba(255,255,255,6)
+    
+}
+
+
+body {
+    background-color: rgb(32,33,36);
+}
+
+/* When the checkbox is checked, add a blue background */
+.container input:checked ~ .checkmark {
+  background-color: gray;
 }
