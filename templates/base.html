@@ -18,6 +18,14 @@
 </head>
 </!DOCTYPE html>
 <body>
+    <nav class="navbar navbar-dark bg-primary">
+        {% if session['username']%}
+            <h5 class="greeting">Hello, {{ session.username }}</h5>
+            <h6 class="logout">Log Out</h6>
+        {% else %}
+            <h5 class="greeting">Welcome to To Do App!</h5>
+        {% endif %}
+    </nav>
     {% block content %}{% endblock %}
 </body>
 </html>
