@@ -42,7 +42,7 @@ def login_process():
 
     return redirect("/list")
 
-@app.route("/logout",methods=['POST'])
+@app.route("/logout")
 def logout():
 
     del session["user_id"]
